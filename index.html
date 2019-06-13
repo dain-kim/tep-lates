@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>"tEp Lates"</title>
+	<style>
+		.tabcontent {
+			display: none;
+		}
+		ul {
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="title">Today's date: <p id="date"></p></h1>
+	<div class="tab">
+		<button class="tablinks" onclick="openTab(event, 'submit')">Make me a late</button>
+		<button class="tablinks" onclick="openTab(event, 'see')">See all lates</button>
+	</div>
+	<div id="submit" class="tabcontent">
+		<form class="submit-form" method="POST" action="TODO">
+			<label for="name">Name:</label>
+			<input type="text" id="name">
+			<br>
+			<label for="diet">I can't/don't/won't eat this (Choose all):</label>
+			<ul>
+				<li>
+					<input type="checkbox" id="meat">
+					<label for="meat">Meat &#127830;</label>
+					<ul>
+						<li>
+							<input type="checkbox" id="beef" class="meat-sub">
+							<label for="beef">Beef &#128046;</label>
+							<br>
+							<input type="checkbox" id="chicken" class="meat-sub">
+							<label for="chicken">Chicken &#128020;</label>
+							<br>
+							<input type="checkbox" id="pork" class="meat-sub">
+							<label for="pork">Pork &#128055;</label>
+							<br>
+						</li>
+					</ul>
+					<br>
+					<input type="checkbox" id="fish" value="fish">
+					<label for="fish">Fish &#128031;</label>
+					<br>
+					<input type="checkbox" id="dairy" value="dairy">
+					<label for="dairy">Dairy &#129371;</label>
+					<br>
+					<input type="checkbox" id="eggs" value="eggs">
+					<label for="eggs">Eggs &#127859;</label>
+					<br>
+					<input type="checkbox" id="nuts" value="nuts">
+					<label for="nuts">Nuts &#129372;</label>
+					<br>
+					<input type="checkbox" id="gluten" value="gluten">
+					<label for="gluten">Gluten &#127806;</label>
+					<br>
+					<input type="checkbox" id="soy" value="soy">
+					<label for="soy">Soy</label>
+					<br>
+					<input type="checkbox" id="veggies" value="veggies">
+					<label for="veggies">Veggies &#129382;</label>
+					<br>
+					<label for="other">Other</label>
+					<input type="text" id="other">
+				</li>
+			</ul>
+			<input type="button" id="submit" value=&#129425;>
+		</form>
+	</div>
+	<div id="see" class="tabcontent">
+		<!-- see all lates content here -->
+		<h2>foo</h2>
+	</div>
+</body>
+
+<!-- Scripts -->
+<script src="main.js"></script>
+</html>
