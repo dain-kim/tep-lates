@@ -43,11 +43,13 @@
 	</div>
 	<div id="post-late" class="tabcontent">
 		<form id="late-form" name="late-form" action="/submit" method="POST">
-			<!--  target='_blank'  onsubmit="alert('Form has been submitted')" -->
+			<!-- target='_blank' onsubmit="alert('Form has been submitted')" -->
 			<label for="name">Name:</label>
 			<input type="text" name="name" id="name" required 
 			oninvalid="this.setCustomValidity('Got a name?')" 
 			oninput="this.setCustomValidity('')">
+			<label for="refrigerate">Please refrigerate my late</label>
+			<input type="checkbox" name="refrigerate" id="refrigerate">
 			<br>
 			<label for="diet">I can't/don't/won't eat this (Choose all):</label>
 			<ul>
@@ -97,20 +99,31 @@
 					<input type="text" name="other" id="other">
 				</li>
 			</ul>
-			<!-- TODO refrigerate button -->
-			<!-- <input type="submit" id="submit" value=&#129425; onclick="submitForm()"> -->
 			<button type="submit" id="submit-late-form">&#129425;</button>
 		</form>
 	</div>
 	<div id="get-late" class="tabcontent">
-		<!-- see all lates content here -->
 		<table border = 1>
-			{% for key, value in db.items() %}
-			<tr>
-				<th> {{ key }} </th>
-				<td> {{ value }} </td>
-			</tr>
-			{% endfor %}
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Restrictions</th>
+					<th>Refrigerate</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for key, value in db.items() %}
+				<tr>
+					<th> {{ key }} </th>
+					<td> {{ ', '.join(value[1:]) }} </td>
+					{% if value[0] == True %}
+					<td> &#10004; </td>
+					{% else %}
+					<td></td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+			</tbody>
 		</table>
 	</div>
 	<div id="delete-late" class="tabcontent">

@@ -3,25 +3,26 @@ from flask import Flask, request, render_template
 foo = Flask('lates', template_folder='./')
 
 local_db = {}
-# food_args = ['beef','chicken','']
+# TODO clear at the end of every day
+
+@foo.route('/')
+def home():
+    return render_template('index.html', db = local_db)
 
 @foo.route('/submit', methods=['POST'])
 def post_late():
     result = request.form
-    # local_db[result['name']] = result
     person_name = result['name']
-    restrictions = []
-    for key in result.keys():
-        if key != 'name' and key != 'other':
-            restrictions += [key]
-    if result['other'] != "":
-        restrictions += [result['other']]
-    local_db[person_name] = restrictions
-    return render_template("index.html", db = local_db)
+    restrictions = ['refrigerate' in result.keys()]
 
-@foo.route('/')
-def bar():
-    return render_template('index.html', db = local_db)
+    for key in result.keys():
+        if key not in ('name','other','refrigerate'):
+            restrictions.append(key)
+    if result['other'] != "":
+        restrictions.append(result['other'])
+    local_db[person_name] = restrictions
+
+    return render_template("index.html", db = local_db)
 
 @foo.route('/delete', methods=['POST'])
 def delete_late():

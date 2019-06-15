@@ -1,18 +1,9 @@
-// date
+// format date
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth() + 1;
 var yyyy = today.getFullYear();
 var date = today.getDay();
-// var date_dict = {
-//     0: 'Sunday',
-//     1: 'Monday',
-//     2: 'Tuesday',
-//     3: 'Wednesday',
-//     4: 'Thursday',
-//     5: 'Friday',
-//     6: 'Saturday'
-// }
 var dateList = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 
 console.log(mm+'/'+dd+'/'+yyyy+', '+dateList[date]);
@@ -25,13 +16,10 @@ function openTab(evt, tabName) {
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
-  // document.getElementById('print').innerHTML = "tabcontent length "+tabcontent.length;
   tablinks = document.getElementsByClassName("tablinks");
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
-    // document.getElementById('print').innerHTML += "tab class "+tablinks[i].className;
   }
-  // document.getElementById('print').innerHTML += "tablinks length "+tablinks.length;
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
@@ -43,6 +31,7 @@ function openTab(evt, tabName) {
 // veganCheck = document.getElementById('vegan');
 // vegetarianCheck = document.getElementById('vegetarian');
 // meatCheck = document.getElementById('meat');
+// document.getElementById('print').innerHTML += "tablinks length "+tablinks.length;
 var checkboxes = document.querySelectorAll('input.meat-sub'),
     checkall = document.getElementById('meat');
 
@@ -60,22 +49,3 @@ checkall.onclick = function() {
     checkboxes[i].checked = this.checked;
   }
 }
-
-
-// receive form
-// document.addEventListener('submit', e => {
-//   document.getElementById('print').innerHTML = 'submitted\n';
-//   const form = e.target;
-//   var formdata = new FormData(form);
-//   document.getElementById('print').innerHTML += new URLSearchParams(formdata).toString();
-// })
-
-// // handle submit
-// function sendLate() {
-//   var postRequest = new XMLHttpRequest();
-
-
-
-
-//   postRequest.open("POST", "TODO");
-// }
