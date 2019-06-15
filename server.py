@@ -22,3 +22,11 @@ def post_late():
 @foo.route('/')
 def bar():
     return render_template('index.html', db = local_db)
+
+@foo.route('/delete', methods=['POST'])
+def delete_late():
+    result = request.form
+    person_name = result['delete-name']
+    if person_name in local_db:
+        local_db.pop(person_name)
+    return render_template("index.html", db = local_db)

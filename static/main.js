@@ -61,11 +61,6 @@ checkall.onclick = function() {
   }
 }
 
-testcheck = document.getElementById('fish');
-testcheck.onclick = function() {
-  document.getElementById('print').innerHTML = 'meat clicked'
-
-}
 
 // receive form
 // document.addEventListener('submit', e => {
