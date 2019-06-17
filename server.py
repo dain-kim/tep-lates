@@ -6,6 +6,8 @@ local_db = {}
 # TODO clear at the end of every day
 
 @foo.route('/')
+@foo.route('/submit', methods=['GET'])
+@foo.route('/delete', methods=['GET'])
 def home():
     return render_template('index.html', db = local_db)
 
@@ -31,3 +33,13 @@ def delete_late():
     if person_name in local_db:
         local_db.pop(person_name)
     return render_template("index.html", db = local_db)
+
+# import schedule, time
+# def clear_db():
+#     print("clearing db...")
+#     local_db.clear()
+# schedule.every().second.do(clear_db)
+# 
+# while True:
+#     schedule.run_pending()
+#     time.sleep(3)

@@ -1,0 +1,88 @@
+body, .tablinks, .delete-name {
+    font-family: Georgia, serif;
+    font-size: 16px;
+}
+body {
+    color: #800080;
+    padding: 20px;
+}
+ul {
+    list-style: none;
+}
+label {
+    cursor: pointer;
+}
+#date {
+    padding-left: 10px;
+    text-align: center;
+}
+.tab {
+    display: flex;
+    flex-wrap: wrap;
+}
+.tab button, #submit-late-form {
+    background-color: #B300B3;
+    border: 2px solid gold;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+.tab button:hover {
+    background-color: #9A009A;
+}
+.tab button.active {
+    background-color: #800080;
+}
+.tablinks {
+    color: gold;
+}
+.tabcontent {
+    display: none;
+    padding: 10px;
+}
+.tabcontent .checkbox-label input {
+    opacity: 0px;
+}
+/* .checkbox-label .checkbox-custom {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: 2px solid #800080;
+} */
+/* below should work, but css doesnt seem to load */
+/* #late-form .checkbox-label .checkbox-custom {
+    color: green !important;
+} */
+table, th, td {
+    border: 1px solid #800080;
+}
+th, td {
+    padding: 5px;
+}
+.delete-name {
+    color: #800080;
+    background-color: white;
+    border: 1px solid #800080;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+}
+.delete-name:hover {
+    background-color: gold;
+}
+#submit-late-form {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: gold;
+}
+#submit-late-form:hover {
+    background-color: #9A009A;
+}
