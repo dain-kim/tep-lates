@@ -1,20 +1,21 @@
-body, .tablinks, .delete-name {
+body, button {
     font-family: Georgia, serif;
-    font-size: 16px;
 }
 body {
+    font-size: 18px;
     color: #800080;
-    padding: 20px;
+    padding: 1em;
 }
 ul {
     list-style: none;
+    margin: 0.2em;
 }
 label {
     cursor: pointer;
 }
 #date {
     padding-left: 10px;
-    text-align: center;
+    /* text-align: center; */
 }
 .tab {
     display: flex;
@@ -27,8 +28,10 @@ label {
     outline: none;
     cursor: pointer;
     margin: 5px;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
+    padding: 0.5em 1em;
     font-size: 20px;
+    color: gold;
 }
 .tab button:hover {
     background-color: #9A009A;
@@ -36,29 +39,95 @@ label {
 .tab button.active {
     background-color: #800080;
 }
-.tablinks {
-    color: gold;
-}
 .tabcontent {
     display: none;
-    padding: 10px;
+    padding: 0.5em;
 }
-.tabcontent .checkbox-label input {
-    opacity: 0px;
+/* TEST */
+#name {
+    margin-right: 10px;
 }
-/* .checkbox-label .checkbox-custom {
+.checkbox-label {
+    position: relative;
+    cursor: pointer;
+    /* font-size: 18px; */
+    height: 18px;
+    width: 18px;
+    clear: both;
+}
+
+.checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox-label .checkbox-custom {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
+    background-color: transparent;
     border-radius: 5px;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
     border: 2px solid #800080;
-} */
-/* below should work, but css doesnt seem to load */
-/* #late-form .checkbox-label .checkbox-custom {
-    color: green !important;
-} */
+}
+.checkbox-label .checkbox-description {
+    margin-left: 32px;
+    line-height: 1.8em;
+}
+
+.checkbox-label input:checked ~ .checkbox-custom {
+    background-color: #800080;
+    border-radius: 5px;
+    -webkit-transform: rotate(0deg) scale(1);
+    -ms-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+    opacity:1;
+    border: 2px solid gold;
+}
+
+
+.checkbox-label .checkbox-custom::after {
+    position: absolute;
+    content: "";
+    left: 9px;
+    top: 9px;
+    height: 0px;
+    width: 0px;
+    border-radius: 5px;
+    border: solid gold;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(0deg) scale(0);
+    -ms-transform: rotate(0deg) scale(0);
+    transform: rotate(0deg) scale(0);
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+}
+.checkbox-label input:checked ~ .checkbox-custom::after {
+  -webkit-transform: rotate(45deg) scale(1);
+  -ms-transform: rotate(45deg) scale(1);
+  transform: rotate(45deg) scale(1);
+  opacity: 1;
+  left: 5px;
+  top: 0px;
+  width: 6px;
+  height: 12px;
+  border: solid gold;
+  border-width: 0 2px 2px 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
 table, th, td {
     border: 1px solid #800080;
 }
@@ -78,10 +147,9 @@ th, td {
     background-color: gold;
 }
 #submit-late-form {
-    font-family: Georgia, serif;
-    font-size: 20px;
+    /* font-family: Georgia, serif; */
     font-weight: bold;
-    color: gold;
+    /* color: gold; */
 }
 #submit-late-form:hover {
     background-color: #9A009A;

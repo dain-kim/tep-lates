@@ -1,15 +1,14 @@
-// format date
+// Format date
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth() + 1;
 var yyyy = today.getFullYear();
 var date = today.getDay();
 var dateList = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-
-console.log(mm+'/'+dd+'/'+yyyy+', '+dateList[date]);
+// console.log(mm+'/'+dd+'/'+yyyy+', '+dateList[date]);
 document.getElementById("date").innerHTML = mm+'/'+dd+'/'+yyyy+', '+dateList[date];
 
-// tabs
+// Expand and collapse tabs
 function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -24,7 +23,7 @@ function openTab(evt, tabName) {
   evt.currentTarget.className += " active";
 }
 
-// select-all checkboxes
+// Nested checkboxes
 // var veganCheckboxes = document.querySelectorAll('input.vegan-sub');
 // var vegetarianCheckboxes = document.querySelectorAll('input.vegetarian-sub');
 // var meatCheckboxes = document.querySelectorAll('input.meat-sub');
@@ -38,7 +37,6 @@ var checkboxes = document.querySelectorAll('input.meat-sub'),
 for(var i=0; i<checkboxes.length; i++) {
   checkboxes[i].onclick = function() {
     var checkedCount = document.querySelectorAll('input.meat-sub:checked').length;
-
     checkall.checked = checkedCount > 0;
     checkall.indeterminate = checkedCount > 0 && checkedCount < checkboxes.length;
   }

@@ -7,99 +7,112 @@
 <body>
 	<div class="date">
 		<h1 id="date"></h1>
-		<div id="print"></div> 
+		<!-- <div id="print"></div>  -->
 		<!-- TODO cross out -->
 	</div>
 	
+	<!-- Tabs -->
 	<div class="tab">
 		<button class="tablinks" onclick="openTab(event, 'post-late')">Make me a late</button>
-		<button class="tablinks" type="submit" onclick="openTab(event, 'get-late')">See all lates</button>
+		<button class="tablinks" onclick="openTab(event, 'get-late')">See all lates</button>
 		<button class="tablinks" onclick="openTab(event, 'delete-late')">Delete my late</button>
 	</div>
 	<div id="post-late" class="tabcontent">
+		<!-- <form id="late-form" name="late-form" action="/submit" method="POST"> -->
 		<form id="late-form" name="late-form" action="/submit" method="POST">
-			<label>Name:
+			<label class="textbox-label">Name:
 				<input type="text" name="name" id="name" required 
 				oninvalid="this.setCustomValidity('Got a name?')" 
 				oninput="this.setCustomValidity('')">
+				<span class="textbox-custom"></span>
 			</label>
-			<br>
 			<label class="checkbox-label">
-				Please refrigerate my late
+				<span class="checkbox-description">Please refrigerate my late</span>
 				<input type="checkbox" name="refrigerate" id="refrigerate">
+				<span class="checkbox-custom"></span>
 			</label>
-			<br><br>
-			I can't/don't/won't eat this (Choose all):
-			<br>
+			<p>I can't/don't/won't eat this (Choose all):</p>
 			<!-- TODO vegetarian/vegan buttons -->
 			<label class="checkbox-label">
 				<input type="checkbox" id="meat">
-				<!-- style="opacity: 0; position: absolute; cursor: pointer;" -->
-				Meat &#127830;
+				<span class="checkbox-custom"></span>
+				<span class="checkbox-description">Meat &#127830;</span>
 			</label>
 			<ul>
 				<li>
 					<label class="checkbox-label">
 						<input type="checkbox" name="beef" id="beef" class="meat-sub">
-						Beef &#128046;
+						<span class="checkbox-custom"></span>
+						<span class="checkbox-description">Beef &#128046;</span>
 					</label>
 				</li>
 				<li>
 					<label class="checkbox-label">
 						<input type="checkbox" name="chicken" id="chicken" class="meat-sub">
-						Chicken &#128020;
+						<span class="checkbox-custom"></span>
+						<span class="checkbox-description">Chicken &#128020;</span>
 					</label>
 				</li>
 				<li>
 					<label class="checkbox-label">
 						<input type="checkbox" name="pork" id="pork" class="meat-sub">
-						Pork &#128055;
+						<span class="checkbox-custom"></span>
+						<span class="checkbox-description">Pork &#128055;</span>
 					</label>
 				</li>
 			</ul>
-			<br>
 			<label class="checkbox-label">
 				<input type="checkbox" name="fish" id="fish">
-				Fish &#128031;
+				<span class="checkbox-custom"></span>
+				<span class="checkbox-description">Fish &#128031;</span>
 			</label>
 			<br>
 			<label class="checkbox-label">
 				<input type="checkbox" name="shellfish" id="shellfish">
-				Shellfish &#129408;
+				<span class="checkbox-custom"></span>
+				<span class="checkbox-description">Shellfish &#129408;</span>
 			</label>
 			<br>
 			<label class="checkbox-label">
 				<input type="checkbox" name="dairy" id="dairy">
-				Dairy &#129371;
+				<span class="checkbox-custom"></span>
+				<span class="checkbox-description">Dairy &#129371;</span>
 			</label>
 			<br>
 			<label class="checkbox-label">
 				<input type="checkbox" name="eggs" id="eggs">
-				Eggs &#127859;
+				<span class="checkbox-custom"></span>
+				<span class="checkbox-description">Eggs &#127859;</span>
 			</label>
 			<br>
 			<label class="checkbox-label">
 				<input type="checkbox" name="nuts" id="nuts">
-				Nuts &#129372;
+				<span class="checkbox-custom"></span>
+				<span class="checkbox-description">Nuts &#129372;</span>
 			</label>
 			<br>
 			<label class="checkbox-label">
 				<input type="checkbox" name="gluten" id="gluten">
-				Gluten &#127806;
+				<span class="checkbox-custom"></span>
+				<span class="checkbox-description">Gluten &#127806;</span>
 			</label>
 			<br>
 			<label class="checkbox-label">
 				<input type="checkbox" name="soy" id="soy">
-				Soy &#127773;
+				<span class="checkbox-custom"></span>
+				<span class="checkbox-description">Soy &#127773;</span>
 			</label>
 			<br>
 			<label class="checkbox-label">
 				<input type="checkbox" name="veggies" id="veggies">
-				Veggies &#129382;
+				<span class="checkbox-custom"></span>
+				<span class="checkbox-description">Veggies &#129382;</span>
 			</label>
 			<br>
-			<label for="other">Other</label>
-			<input type="text" name="other" id="other">
+			<label class="textbox-label">Other
+				<input type="text" name="other" id="other">
+				<span class="textbox-custom"></span>
+			</label>
 			<br><br>
 			<button type="submit" id="submit-late-form">Submit &#129425;</button>
 		</form>
@@ -113,12 +126,13 @@
 					<th>Refrigerate</th>
 				</tr>
 			</thead>
+			
 			<tbody>
-				{% for key, value in db.items() %}
+				{% for (name, restrictions, refrigerate, _) in db %}
 				<tr>
-					<th> {{ key }} </th>
-					<td> {{ ', '.join(value[1:]) }} </td>
-					{% if value[0] == True %}
+					<th> {{ name }} </th>
+					<td> {{ restrictions }} </td>
+					{% if refrigerate == 1 %}
 					<td> &#10004; </td>
 					{% else %}
 					<td></td>
@@ -130,9 +144,10 @@
 		<p>Be sure to refresh the page to see the lastest results!</p>
 	</div>
 	<div id="delete-late" class="tabcontent">
+		
 		<form id="delete-late-form" name="delete-late-form" action="/delete" method="POST">
-			{% for key in db.keys() %}
-			<button type=submit class="delete-name" name="delete-name" value="{{ key }}">{{ key }}</button>
+			{% for (name, _, _, _) in db %}
+			<button type=submit class="delete-name" name="delete-name" value="{{ name }}">{{ name }}</button>
 			{% endfor %}
 		</form>
 	</div>
