@@ -41,11 +41,12 @@ label {
 }
 .tabcontent {
     display: none;
+    font-size: 18px;
     padding: 0.5em;
 }
 /* TEST */
 #name {
-    margin-right: 10px;
+    margin-right: 1em;
 }
 .checkbox-label {
     position: relative;
@@ -62,14 +63,36 @@ label {
     cursor: pointer;
 }
 
-.checkbox-label .checkbox-custom {
+/*  */
+.textbox-label {
+    position: relative;
+    cursor: pointer;
+    height: 18px;
+    /* width: 60px; */
+    clear: both;
+}
+.textbox-label input {
+    position: relative;
+    /* opacity: 0; */
+    cursor: pointer;
+    outline: none;
+    border: 2px solid #800080;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #800080;
+    font-family: Georgia, serif;
+    padding-left: 3px;
+}
+
+/*  */
+.checkbox-custom {
     position: absolute;
     top: 0px;
     left: 0px;
     height: 18px;
     width: 18px;
     background-color: transparent;
-    border-radius: 5px;
+    border-radius: 4px;
     transition: all 0.3s ease-out;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
@@ -84,7 +107,7 @@ label {
 
 .checkbox-label input:checked ~ .checkbox-custom {
     background-color: #800080;
-    border-radius: 5px;
+    border-radius: 4px;
     -webkit-transform: rotate(0deg) scale(1);
     -ms-transform: rotate(0deg) scale(1);
     transform: rotate(0deg) scale(1);
@@ -100,7 +123,7 @@ label {
     top: 9px;
     height: 0px;
     width: 0px;
-    border-radius: 5px;
+    border-radius: 4px;
     border: solid gold;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(0deg) scale(0);
@@ -114,27 +137,36 @@ label {
     -o-transition: all 0.3s ease-out;
 }
 .checkbox-label input:checked ~ .checkbox-custom::after {
-  -webkit-transform: rotate(45deg) scale(1);
-  -ms-transform: rotate(45deg) scale(1);
-  transform: rotate(45deg) scale(1);
-  opacity: 1;
-  left: 5px;
-  top: 0px;
-  width: 6px;
-  height: 12px;
-  border: solid gold;
-  border-width: 0 2px 2px 0;
-  background-color: transparent;
-  border-radius: 0;
+    -webkit-transform: rotate(45deg) scale(1);
+    -ms-transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+    left: 5px;
+    top: 0px;
+    width: 5px;
+    height: 11px;
+    border: solid gold;
+    border-width: 0 2px 2px 0;
+    background-color: transparent;
+    border-radius: 0;
 }
 
 table, th, td {
-    border: 1px solid #800080;
+    /* border: 1px solid #800080; */
+    /* border-radius: 4px; */
+    border: none;
 }
 th, td {
+    border: 1px solid #800080;
+    border-radius: 4px;
     padding: 5px;
+    background-color: white;
+}
+tbody {
+    font-weight: 300;
 }
 .delete-name {
+    font-size: 18px;
     color: #800080;
     background-color: white;
     border: 1px solid #800080;
