@@ -1,7 +1,5 @@
-body, button {
-    font-family: Georgia, serif;
-}
 body {
+    font-family: Georgia, serif;
     font-size: 18px;
     color: #800080;
     padding: 1em;
@@ -13,22 +11,24 @@ ul {
 label {
     cursor: pointer;
 }
+p {
+    margin: 0.5em;
+}
 #date {
     padding-left: 10px;
-    /* text-align: center; */
 }
 .tab {
     display: flex;
     flex-wrap: wrap;
 }
 .tab button, #submit-late-form {
+    font-family: Georgia, serif;
     background-color: #B300B3;
     border: 2px solid gold;
     border-radius: 8px;
     outline: none;
     cursor: pointer;
     margin: 5px;
-    /* padding: 10px 20px; */
     padding: 0.5em 1em;
     font-size: 20px;
     color: gold;
@@ -44,7 +44,6 @@ label {
     font-size: 18px;
     padding: 0.5em;
 }
-/* TEST */
 #name {
     margin-right: 1em;
 }
@@ -63,7 +62,6 @@ label {
     cursor: pointer;
 }
 
-/*  */
 .textbox-label {
     position: relative;
     cursor: pointer;
@@ -82,9 +80,9 @@ label {
     color: #800080;
     font-family: Georgia, serif;
     padding-left: 3px;
+    caret-color: #800080;
 }
 
-/*  */
 .checkbox-custom {
     position: absolute;
     top: 0px;
@@ -101,7 +99,8 @@ label {
     border: 2px solid #800080;
 }
 .checkbox-label .checkbox-description {
-    margin-left: 32px;
+    /* margin-left: 32px; */
+    margin-left: 1.8em;
     line-height: 1.8em;
 }
 
@@ -151,21 +150,20 @@ label {
     border-radius: 0;
 }
 
-table, th, td {
-    /* border: 1px solid #800080; */
-    /* border-radius: 4px; */
+table {
     border: none;
 }
 th, td {
     border: 1px solid #800080;
     border-radius: 4px;
-    padding: 5px;
+    padding: 5px 10px;
     background-color: white;
 }
 tbody {
     font-weight: 300;
 }
 .delete-name {
+    font-family: Georgia, serif;
     font-size: 18px;
     color: #800080;
     background-color: white;
@@ -179,10 +177,11 @@ tbody {
     background-color: gold;
 }
 #submit-late-form {
-    /* font-family: Georgia, serif; */
     font-weight: bold;
-    /* color: gold; */
 }
 #submit-late-form:hover {
     background-color: #9A009A;
+}
+#delete-late-form {
+    max-width: 600px;
 }

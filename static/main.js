@@ -5,7 +5,7 @@ var mm = today.getMonth() + 1;
 var yyyy = today.getFullYear();
 var date = today.getDay();
 var dateList = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-document.getElementById("date").innerHTML = mm+'/'+dd+'/'+yyyy+', '+dateList[date];
+document.getElementById("date").innerHTML = mm+'/'+dd+'/'+yyyy+', '+dateList[date]+' &#129425;';
 
 // Expand and collapse tabs
 function openTab(evt, tabName) {

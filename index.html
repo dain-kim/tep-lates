@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="/static/style.css" rel="stylesheet"/>
 	<title>tEp Lates</title>
 </head>
 <body>
 	<div class="date">
 		<h1 id="date"></h1>
-		<!-- <div id="print"></div>  -->
-		<!-- TODO cross out -->
 	</div>
 	
-	<!-- Tabs -->
 	<div class="tab">
 		<button class="tablinks" onclick="openTab(event, 'post-late')">Make me a late</button>
 		<button class="tablinks" onclick="openTab(event, 'get-late')">See all lates</button>
@@ -31,7 +29,7 @@
 				<span class="checkbox-custom"></span>
 			</label>
 			<p>I can't/don't/won't eat this (Choose all):</p>
-			<!-- TODO vegetarian/vegan buttons -->
+			<!-- TODO vegetarian/vegan buttons &#127793; -->
 			<label class="checkbox-label">
 				<input type="checkbox" id="meat">
 				<span class="checkbox-custom"></span>
@@ -113,11 +111,11 @@
 				<span class="textbox-custom"></span>
 			</label>
 			<br><br>
-			<button type="submit" id="submit-late-form">Submit &#129425;</button>
+			<button type="submit" id="submit-late-form">Submit</button>
 		</form>
 	</div>
 	<div id="get-late" class="tabcontent">
-		<table border = 1>
+		<table>
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -132,7 +130,7 @@
 					<th> {{ name }} </th>
 					<td> {{ restrictions }} </td>
 					{% if refrigerate == 1 %}
-					<td> &#10004; </td>
+					<td style="text-align: center;"> &#10004; </td>
 					{% else %}
 					<td></td>
 					{% endif %}
@@ -140,7 +138,7 @@
 				{% endfor %}
 			</tbody>
 		</table>
-		<p>Be sure to refresh the page to see the lastest results!</p>
+		<p style="font-size: 16px;">Be sure to refresh the page to see the lastest results!</p>
 	</div>
 	<div id="delete-late" class="tabcontent">
 		<form id="delete-late-form" name="delete-late-form" action="/delete" method="POST">
