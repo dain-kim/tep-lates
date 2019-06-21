@@ -3,15 +3,8 @@ import sqlite3
 conn = sqlite3.connect('lates.db')
 c = conn.cursor()
 c.execute('CREATE TABLE IF NOT EXISTS lates (name TEXT, restrictions TEXT, refrigerate INTEGER, date TEXT)')
-# print('created table')
-conn.commit()
-c.execute('SELECT * FROM lates')
-# print(c.fetchall())
 c.execute('DELETE FROM lates WHERE date < date("now")')
 conn.commit()
-# print('cleared table')
-c.execute('SELECT * FROM lates')
-# print(c.fetchall())
 conn.close()
 
 
@@ -26,7 +19,7 @@ def get_db():
     c.execute('SELECT * FROM lates WHERE date = date("now")')
     db = c.fetchall() # list of items: [('a', '2019-06-20'), ('b', '2019-06-20')]
     conn.close()
-    # print('returning', db)
+    print('returning', db)
     return db
 
 @foo.route('/', methods=['GET'])
@@ -41,6 +34,7 @@ def home():
 # @foo.route('/', methods=['POST'])
 def post_late():
     result = request.form
+    print(result)
     person_name = result['name']
     # restrictions = ['refrigerate' in result.keys()]
     # restrictions = []
@@ -50,7 +44,10 @@ def post_late():
     # if result['other'] != "":
     #     restrictions.append(result['other'])
     # local_db[person_name] = restrictions
-    restrictions = ', '.join([key for key in result.keys() if key not in ('name','other','refrigerate')])
+    restrictions = [key for key in result.keys() if key not in ('name','other','refrigerate')]
+    if result['other']:
+        restrictions.append(result['other'])
+    restr = ', '.join(restrictions)
 
     # SQL TEST
     # restrictions = ', '.join(restrictions)
@@ -61,7 +58,7 @@ def post_late():
     # if c.fetchall():
     #     c.execute('DELETE FROM lates WHERE name = ?', (person_name,))
     c.execute('DELETE FROM lates WHERE name = ?', (person_name,))
-    c.execute('INSERT INTO lates VALUES (?,?,?,date("now"))', (person_name, restrictions, refr))
+    c.execute('INSERT INTO lates VALUES (?,?,?,date("now"))', (person_name, restr, refr))
     # print("INSERTING")
     conn.commit()
     conn.close()

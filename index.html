@@ -18,7 +18,6 @@
 		<button class="tablinks" onclick="openTab(event, 'delete-late')">Delete my late</button>
 	</div>
 	<div id="post-late" class="tabcontent">
-		<!-- <form id="late-form" name="late-form" action="/submit" method="POST"> -->
 		<form id="late-form" name="late-form" action="/submit" method="POST">
 			<label class="textbox-label">Name:
 				<input type="text" name="name" id="name" required 
@@ -144,7 +143,6 @@
 		<p>Be sure to refresh the page to see the lastest results!</p>
 	</div>
 	<div id="delete-late" class="tabcontent">
-		
 		<form id="delete-late-form" name="delete-late-form" action="/delete" method="POST">
 			{% for (name, _, _, _) in db %}
 			<button type=submit class="delete-name" name="delete-name" value="{{ name }}">{{ name }}</button>
