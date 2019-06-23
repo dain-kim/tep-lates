@@ -36,7 +36,7 @@ def post_late():
     refr = 1 if 'refrigerate' in result.keys() else 0
     conn = sqlite3.connect('lates.db')
     c = conn.cursor()
-    c.execute('DELETE FROM lates WHERE name = ?', (name,))
+    # c.execute('DELETE FROM lates WHERE name = ?', (name,))
     c.execute('INSERT INTO lates VALUES (?,?,?,date("now","localtime"))', (name, restr, refr))
     conn.commit()
     conn.close()
