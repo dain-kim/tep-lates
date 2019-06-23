@@ -1,6 +1,7 @@
+/* General spacing and arrangement */
 body {
     font-family: Georgia, serif;
-    font-size: 18px;
+    /* font-size: 1em; */
     color: #800080;
     padding: 1em;
 }
@@ -8,15 +9,15 @@ ul {
     list-style: none;
     margin: 0.2em;
 }
-label {
+label, .delete-name {
     cursor: pointer;
 }
-p {
-    margin: 0.5em;
+.date {
+    font-size: 1em;
+    /* margin: auto 0.5em; */
+    /* padding: auto 1em; */
 }
-#date {
-    padding-left: 10px;
-}
+/* Tabs */
 .tab {
     display: flex;
     flex-wrap: wrap;
@@ -28,9 +29,9 @@ p {
     border-radius: 8px;
     outline: none;
     cursor: pointer;
-    margin: 5px;
+    /* margin: 5px; */
     padding: 0.5em 1em;
-    font-size: 20px;
+    font-size: 1.2em;
     color: gold;
 }
 .tab button:hover {
@@ -41,15 +42,18 @@ p {
 }
 .tabcontent {
     display: none;
-    font-size: 18px;
+    font-size: 1.1em;
     padding: 0.5em;
+}
+.half {
+    display: inline;
 }
 #name {
     margin-right: 1em;
 }
 .checkbox-label {
     position: relative;
-    cursor: pointer;
+    /* cursor: pointer; */
     /* font-size: 18px; */
     height: 18px;
     width: 18px;
@@ -59,12 +63,12 @@ p {
 .checkbox-label input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .textbox-label {
     position: relative;
-    cursor: pointer;
+    /* cursor: pointer; */
     height: 18px;
     /* width: 60px; */
     clear: both;
@@ -72,11 +76,11 @@ p {
 .textbox-label input {
     position: relative;
     /* opacity: 0; */
-    cursor: pointer;
+    /* cursor: pointer; */
     outline: none;
     border: 2px solid #800080;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 1em;
     color: #800080;
     font-family: Georgia, serif;
     padding-left: 3px;
@@ -164,13 +168,13 @@ tbody {
 }
 .delete-name {
     font-family: Georgia, serif;
-    font-size: 18px;
+    font-size: 1em;
     color: #800080;
     background-color: white;
     border: 1px solid #800080;
     border-radius: 5px;
     outline: none;
-    cursor: pointer;
+    /* cursor: pointer; */
     padding: 5px;
 }
 .delete-name:hover {
@@ -184,4 +188,45 @@ tbody {
 }
 #delete-late-form {
     max-width: 600px;
+}
+/* mobile-friendly */
+
+@media all and (max-width: 480px) {
+    .date {
+        font-size: 0.8em;
+        text-align: center;
+    }
+    .tab button {
+        width: 100%;
+        font-size: 1em;
+    }
+    
+    .tabcontent .half {
+        display: block;
+    }
+}
+@media all and (max-width: 414px) {
+    body {
+        padding: 0.5em;
+    }
+    .tabcontent {
+        font-size: 1em;
+    }
+    .date {
+        font-size: 0.7em;
+        text-align: center;
+    }
+}
+@media all and (max-width: 375px) {
+    table {
+        font-size: 0.8em;
+    }
+}
+@media all and (max-width: 320px) {
+    table {
+        font-size: 0.75em;
+    }
+    .tabcontent {
+        font-size: 0.9em;
+    }
 }
