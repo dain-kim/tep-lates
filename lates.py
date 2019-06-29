@@ -52,6 +52,3 @@ def delete_late():
     conn.commit()
     conn.close()
     return redirect('/')
-
-if __name__ == "__main__":
-    foo.run()

@@ -20,7 +20,7 @@
 		<form id="late-form" name="late-form" action="/submit" method="POST">
 			<div class="half">
 				<label class="textbox-label">Name:
-					<input type="text" name="name" id="name" required 
+					<input type="text" name="name" id="name" required pattern=".*\S+.*"
 					oninvalid="this.setCustomValidity('Got a name?')" 
 					oninput="this.setCustomValidity('')">
 					<span class="textbox-custom"></span>
