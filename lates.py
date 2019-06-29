@@ -52,3 +52,6 @@ def delete_late():
     conn.commit()
     conn.close()
     return redirect('/')
+
+if __name__ == "__main__":
+    foo.run(host='0.0.0.0', port=8080)
